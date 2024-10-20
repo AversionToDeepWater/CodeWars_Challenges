@@ -14,14 +14,14 @@ Examples:
 
 string = "Hello There Friends"
 
-def to_weird_case(words:str) :
+def to_weird_case(words:str) -> str:
     # len_words = len(words) #no. of characters in words, maybe not needed? -- actually the better way to approach
     # split string at any white space and give you back string as list
     other_letter = [ ]
     for i in range(len(words)):
-        if i % 2 == 0:
+        if i % 2 == 0 and words[i] != " ":
              other_letter.append(words[i].upper())
-        else:
+        elif words[i] == " " or i % 2 != 0:
             other_letter.append(words[i].lower())
     weird_letters = "".join(other_letter) #Do not need to add space to "" bc the space is already in the list
     return weird_letters
