@@ -12,9 +12,31 @@ Examples:
 
 '''
 
-string = "Hello"
+string = "Hello There Friends"
 
 def to_weird_case(words:str) -> str:
-    len_words = len(words) #no. of characters in words
-    separated = words.split(" ") # split string at any white space and give you back string as list
+    # len_words = len(words) #no. of characters in words, maybe not needed?
+    # separated = words.split(" ") # split string at any white space and give you back string as list
+    for i in words[::2]: # So first :
+        if i != " ":
+            i = i.upper()
+            print(i)
+    print(words)
+    # rejoined = " ".join(separated)
+    return words
+
+print(to_weird_case(string))
+
+''' NOTES : use of double colons to slice strings
+collection[start:stop:step]
+In the syntax above:
+
+collection denotes the data collection (list, string, array, and so on).
+start denotes where the slicing operation should start from.
+stop denotes where the operation should stop.
+step denotes the sequence of iterating through the elements.
+If you look closely at the syntax, you can see how the colons separate each parameter.
+'''
+
+
 
