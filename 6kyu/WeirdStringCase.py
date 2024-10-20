@@ -14,18 +14,44 @@ Examples:
 
 string = "Hello There Friends"
 
-def to_weird_case(words:str) -> str:
-    # len_words = len(words) #no. of characters in words, maybe not needed?
-    # separated = words.split(" ") # split string at any white space and give you back string as list
-    for i in words[::2]: # So first :
-        if i != " ":
-            i = i.upper()
-            print(i)
-    print(words)
-    # rejoined = " ".join(separated)
-    return words
+def to_weird_case(words:str) :
+    # len_words = len(words) #no. of characters in words, maybe not needed? -- actually the better way to approach
+    # split string at any white space and give you back string as list
+    other_letter = [ ]
+    for i in range(len(words)):
+        if i % 2 == 0:
+             other_letter.append(words[i].upper())
+        else:
+            other_letter.append(words[i].lower())
+    weird_letters = "".join(other_letter) #Do not need to add space to "" bc the space is already in the list
+    return weird_letters
 
 print(to_weird_case(string))
+
+
+
+
+    # separated = words.split()
+    # for i in range(len(separated)):
+    #     if i % 2 == 0:
+    #         separated[i] = separated[i].upper()
+    #     else:
+    #         separated[i] = separated[i].lower()
+    #     print(i)
+    # return separated This just capitalises every other WORD not every other letter
+
+
+
+
+    # for i in words[::2]: # So if I wanted to return every other letter I would use [::2] however, i cannot
+    #     # modify the original string using this method as strings are immutable i.e., values cannot be changed
+    #     if i != " ": #ignores spaces and commas
+    #         i = i.upper()
+    #         print(i) #this print statement shows that every other letter is being capitalised
+    # # rejoined = " ".join(separated)
+    # return words
+
+
 
 ''' NOTES : use of double colons to slice strings
 collection[start:stop:step]
@@ -36,6 +62,8 @@ start denotes where the slicing operation should start from.
 stop denotes where the operation should stop.
 step denotes the sequence of iterating through the elements.
 If you look closely at the syntax, you can see how the colons separate each parameter.
+
+SOURCE: https://www.freecodecamp.org/news/what-does-mean-in-python-operator-meaning-for-double-colon/
 '''
 
 
