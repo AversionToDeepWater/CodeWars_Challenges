@@ -14,21 +14,33 @@ Examples:
 
 string = "This is a test"
 
+## THIS WORKS!! Finally omfg
 def to_weird_case(words:str) -> str:
     # len_words = len(words) #no. of characters in words, maybe not needed? -- actually the better way to approach
     # split string at any white space and give you back string as list
     list = words.split()
-    other_letter = [ ]
+    result = [ ]
+
+    for word in list:
+        weird_case = []
+        for i in range(len(word)):
+            if i % 2 == 0:
+                weird_case.append(word[i].upper())
+            else:
+                weird_case.append(word[i].lower())
+        result.append("".join(weird_case) )#
+    str_result = " ".join(result)
+    return str_result
 
 
-    for i in list: #So it's zeroth index, each word needs to be considered individually
-        for i in range(len(list)):
-            if i % 2 == 0 and list[i] != " ":
-                 other_letter.append(list[i].upper())
-            elif list[i] == " " or i % 2 != 0:
-                other_letter.append(list[i].lower())
-        weird_letters = "".join(other_letter) #Do not need to add space to "" bc the space is already in the list
-        return weird_letters
+    # #for i in list: #So it's zeroth index, each word needs to be considered individually
+    # for i in range(len(words)):
+    #     if i % 2 == 0 and words[i] != " ":
+    #         other_letter.append(words[i].upper())
+    #     elif words[i] == " " or i % 2 != 0:
+    #         other_letter.append(words[i].lower())
+    #     weird_letters = "".join(other_letter) #Do not need to add space to "" bc the space is already in the list
+    # return weird_letters
 
 
     # for i in range(len(words)):
