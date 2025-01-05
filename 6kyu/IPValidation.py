@@ -28,17 +28,24 @@ def is_valid_ip(string) -> bool:
     if len(split_ip) != 4:
         return False
 
+
     #Make a new list with the first character of each item in split_ip. If any of those are zero ('0' as we are working with strings), return False.
     is_zero = [x[0] for x in split_ip]
-    for item in is_zero:
-        # 0 by itself would be valid, so check if there are leading zeros
-        if len(item) > 1 and item == '0':
-            return False
+    try:
+        for item in is_zero:
+            # 0 by itself would be valid, so check if there are leading zeros
+            if len(item) > 1 and item == '0':
+                return False
+    except ValueError: #if we encounter ValueError bc it has letters return False
+        return False
 
     # Changed to check if a criteria is *not* met, otherwise the first true item it encounters returns True and breaks the loop
-    for items in split_ip:
-        if not 0 < int(items) < 255:
-            return False
+    try:
+        for items in split_ip:
+            if not 0 <= int(items) <= 255:
+                return False
+    except ValueError: #need this check again here
+        return False
 
     #If it passes all the checks then return True
     return True
