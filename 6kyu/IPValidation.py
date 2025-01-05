@@ -52,7 +52,7 @@ def is_valid_ip(string) -> bool:
 # print(test)
 
 
-# UNCOMMENT THIS FOR BETTER UNDERSTANDING OF HOW CODE WORKS -- actually not needed anymore 
+# UNCOMMENT THIS FOR BETTER UNDERSTANDING OF HOW CODE WORKS -- actually not needed anymore
 # s = example1.split('.')
 # print(s) #-> prints list of split string
 # y = [x[0] for x in s] #returns first character from each item in list of strings
