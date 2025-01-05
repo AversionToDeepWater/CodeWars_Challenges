@@ -43,8 +43,9 @@ def is_valid_ip(string) -> bool:
     #If it passes all the checks then return True
     return True
 
-test = is_valid_ip(example2)
-print(test)
+# TESTING INPUTS
+# test = is_valid_ip(example2)
+# print(test)
 
 
 # UNCOMMENT THIS FOR BETTER UNDERSTANDING OF HOW CODE WORKS
