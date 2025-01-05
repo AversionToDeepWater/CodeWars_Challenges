@@ -21,31 +21,28 @@ example2 ='123.45.67.89'
 
 
 def is_valid_ip(string) -> bool:
-    # Splits our ip address into a list of strings. Our ip address is split at the '.'
+    #Splits our ip address into a list of strings. Our ip address is split at the '.'
     split_ip = string.split('.')
 
     #Checks that there are four octets (we should have four items in our list)
     if len(split_ip) != 4:
         return False
 
+    #Check all conditions in one for loop instead of multiple for loops (better time complexity!)
+    for item in split_ip:
 
-    #Make a new list with the first character of each item in split_ip. If any of those are zero ('0' as we are working with strings), return False.
-    is_zero = [x[0] for x in split_ip]
-    try:
-        for item in is_zero:
-            # 0 by itself would be valid, so check if there are leading zeros
-            if len(item) > 1 and item == '0':
-                return False
-    except ValueError: #if we encounter ValueError bc it has letters return False
-        return False
+        #checks that we only have integers
+        if not item.isdigit():
+            return False
 
-    # Changed to check if a criteria is *not* met, otherwise the first true item it encounters returns True and breaks the loop
-    try:
-        for items in split_ip:
-            if not 0 <= int(items) <= 255:
-                return False
-    except ValueError: #need this check again here
-        return False
+        #checks that for numbers with more than one digit, it does not start with zero
+        if len(item) > 1 and item[0] == '0':
+            return False
+
+        # Changed to check if a criteria is *not* met, otherwise the first true item it encounters returns True and breaks the loop
+        if not 0 <= int(item) <= 255:
+            return False
+
 
     #If it passes all the checks then return True
     return True
@@ -55,7 +52,7 @@ def is_valid_ip(string) -> bool:
 # print(test)
 
 
-# UNCOMMENT THIS FOR BETTER UNDERSTANDING OF HOW CODE WORKS
+# UNCOMMENT THIS FOR BETTER UNDERSTANDING OF HOW CODE WORKS -- actually not needed anymore 
 # s = example1.split('.')
 # print(s) #-> prints list of split string
 # y = [x[0] for x in s] #returns first character from each item in list of strings
