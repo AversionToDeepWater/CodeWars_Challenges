@@ -22,7 +22,32 @@ fo99obar99 -> fo99obar100
 Attention: If the number has leading zeros the amount of digits should be considered.
 '''
 
+import re
 # I think I should try and use re library bc that seems to make the most sense
+
+def increment_string(string: str):#-> str:
+    # [1-9] so that leading zeros stay as sting
+    find = re.match('.*?([0-9]+)$', string).group(1)
+    replace = re.sub(find ,str(int(find) + 1), string)
+
+    # if find:
+    #     x = int(find) + 1
+    #     return string + " -> " + str(x)
+
+    return replace
+
+
+
+
+
+
+
+
+
+
+
+
+### FIRST ATTEMPT ####
 # def increment_string(string):
 #     # start at one as we want to increase the number at the end by 1, or add 1 at the end if there isn't a number at the end of the text
 #     numbers = []
@@ -38,25 +63,22 @@ Attention: If the number has leading zeros the amount of digits should be consid
 #     return numbers
 
 
-
-
-
-
-
-
 ##### TESTING ####
-# example1 = "foo1"
-# example2 = "foobar"
+example1 = "foo1"
+#example2 = "foobar"
 # example3 = "foobar099"
-# example4 = "fo99obar99"
+example4 = "fo99obar99"
+example5 = "foo0042"
 #
-# # test_output1 = increment_string(example1)
-# # test_output2 = increment_string(example2)
+test_output1 = increment_string(example1)
+#test_output2 = increment_string(example2)
 # test_output3 = increment_string(example3)
-# test_output4 = increment_string(example4)
-# # print(test_output1)
+test_output4 = increment_string(example4)
+test_output5 = increment_string(example5)
+print(test_output1)
 # # print(test_output2)
-# print(test_output4)
+print(test_output4)
+print(test_output5)
 
 
 
@@ -65,6 +87,26 @@ Attention: If the number has leading zeros the amount of digits should be consid
 
 # https://www.w3schools.com/python/python_regex.asp
 # https://www.geeksforgeeks.org/python-splitting-text-and-number-in-string/
+# https://stackoverflow.com/questions/13518874/python-regex-get-end-digits-from-a-string
+
+'''
+USING REGULAR EXPRESSIONS TO FIND INT AT THE END OF A STRING 
+(From stack overflow)
+>>> import re
+>>> s=r"""99-my-name-is-John-Smith-6376827-%^-1-2-767980716"""
+>>> re.match('.*?([0-9]+)$', s).group(1)
+
+.*? is a non-greedy match and consumes only as much as possible (a greedy match would consume everything except for the last digit).
+[0-9] and \d are two different ways of capturing digits. Note that the latter also matches digits in other writing schemes, like ୪ or ൨.
+Parentheses (()) make the content of the expression a group, which can be retrieved with group(1) (or 2 for the second group, 0 for the whole match).
++ means multiple entries (at least one number at the end).
+$ matches only the end of the input.
+
+'''
+
+
+
+
 
 # Code below only works if there is a space between the word and the numbers in the string
 # i.e., can split 12 in 'foo 12' but NOT in 'foo12'
