@@ -15,33 +15,55 @@ foo9 -> foo10
 
 foo099 -> foo100
 
+foobar099 -> foobar100
+
+fo99obar99 -> fo99obar100
+
 Attention: If the number has leading zeros the amount of digits should be considered.
 '''
 
-def increment_string(string):
-    # start at one as we want to increase the number at the end by 1, or add 1 at the end if there isn't a number at the end of the text
-    numbers = 1
-    text = ""
-    for i in string:
-        if i.isdigit():
-            numbers += int(i)
-        else:
-            text += i
-
-    string = text + str(numbers)
-
-    return string
-
-example1 = "foo1"
-example2 = "foobar"
-
-test_output1 = increment_string(example1)
-test_output2 = increment_string(example2)
-print(test_output1)
-print(test_output2)
+# I think I should try and use re library bc that seems to make the most sense
+# def increment_string(string):
+#     # start at one as we want to increase the number at the end by 1, or add 1 at the end if there isn't a number at the end of the text
+#     numbers = []
+#     text = ""
+#     for i in string: # this only adds one to the first digit it encounters in the string
+#         if i.isdigit() or string.endswith(i, i.isdigit()):
+#             numbers.append(i)
+#         else:
+#             text += i
+#
+#     # string = text + str(numbers)
+#
+#     return numbers
 
 
-#Article I looked at
+
+
+
+
+
+
+##### TESTING ####
+# example1 = "foo1"
+# example2 = "foobar"
+# example3 = "foobar099"
+# example4 = "fo99obar99"
+#
+# # test_output1 = increment_string(example1)
+# # test_output2 = increment_string(example2)
+# test_output3 = increment_string(example3)
+# test_output4 = increment_string(example4)
+# # print(test_output1)
+# # print(test_output2)
+# print(test_output4)
+
+
+
+
+#Articles I looked at
+
+# https://www.w3schools.com/python/python_regex.asp
 # https://www.geeksforgeeks.org/python-splitting-text-and-number-in-string/
 
 # Code below only works if there is a space between the word and the numbers in the string
