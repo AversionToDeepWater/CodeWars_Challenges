@@ -26,15 +26,25 @@ import re
 # I think I should try and use re library bc that seems to make the most sense
 
 def increment_string(string: str):#-> str:
-    # [1-9] so that leading zeros stay as sting
-    find = re.match('.*?([0-9]+)$', string).group(1)
-    replace = re.sub(find ,str(int(find) + 1), string)
+    find_num = re.search('.*?([0-9]+)$', string)
+    #re. match() searches for matches from the beginning of a string while re.search() searches for matches anywhere in the string.
+
+    if find_num:
+        end_num = find_num.group(1) #only gets the numbers from the end of the string
+        num_increment = str(int(end_num) + 1).zfill(len(end_num)) #zfill adds leading zeros as those are removed when a string is converted to an int
+        #.start() means that the string is sliced at the index of where our end number is found. e.g. "foo042" is sliced at index 3 -> "foo"
+        new_str = string[:find_num.start(1)] + num_increment
+
+        #when I used re.match fir find_num, I would get errors bc re.match returns a match object
+        #string[:find_num.start(1)] works bc it gets the starting index of group 1
+        #start(1) returns an integer which is a valiud index
+        return new_str
+    else:
+        return string + "1"
 
     # if find:
     #     x = int(find) + 1
     #     return string + " -> " + str(x)
-
-    return replace
 
 
 
