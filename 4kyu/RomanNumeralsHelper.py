@@ -69,7 +69,40 @@ class RomanNumerals:
 
     @staticmethod
     def from_roman(roman_num : str) -> int:
-        return 0
+        #here we have made a dictionary of the roman numerals with their corresponding numbers
+        roman_dict = dict(zip(RomanNumerals.sym, RomanNumerals.num))
+
+        i = 0
+        num = 0
+        while i < len(roman_num): #this ensures we can only traverse through the length of the string input
+
+            #the first if statement checks to see if there is a two character roman value
+            # this is by making sure we 1. are not out of bounds of the length of the string
+            # and 2. that the two character roman numeral exists in the dictionary
+            if i + 1 < len(roman_num) and roman_num[i:i+2] in roman_dict:
+                num += roman_dict[roman_num[i:i+2]]
+                i += 2 #as we have covered two characters in the string i+2
+            else:
+                num += roman_dict[roman_num[i]]
+                i+= 1
+
+
+        return num
 
 number = 3549
+roman = 'MMMDXLIX'
 print("Roman value of number is:", RomanNumerals.to_roman(number))
+print("The integer value is: ", RomanNumerals.from_roman(roman))
+
+'''
+Useful info: https://www.geeksforgeeks.org/python-program-to-convert-integer-to-roman/
+
+'//' is a floor division operator. 
+This means after it divides two numbers, it returns the largest integer less than or equal to the result
+e.g. 7 // 2 = 3. This is as 7/2 = 3.5, meaning 3 is the largest int smaller than 3.5
+
+'%' is the modulus operator.
+This means it divides two numbers and returns the remainder of the division.
+e.g. 7 %2 = 1, where 1 is the remainder after the division.
+
+'''
