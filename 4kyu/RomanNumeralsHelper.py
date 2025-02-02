@@ -51,19 +51,20 @@ class RomanNumerals:
     num = [1,4,5,9,10,40,50,90,100,400,500,900,1000]
     sym = ["I", "IV","V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"]
 
-    i = 12 #this means that the code will loop from the largest num and sym (i.e., index 12)
-    # this ensures that the algorithm will traverse the list from largest to smallest
+
+
     @staticmethod
     def to_roman(val : int) -> str:
         result = ""
+        i = 12
         while val:
-            div = val // RomanNumerals.num[RomanNumerals.i]
-            val %= RomanNumerals.num[RomanNumerals.i]
+            div = val // RomanNumerals.num[i]
+            val %= RomanNumerals.num[i]
 
             while div:
-                result += RomanNumerals.sym[RomanNumerals.i]
+                result += RomanNumerals.sym[i]
                 div -= 1  #so we add the relevant roman numeral the correct number of times
-            RomanNumerals.i -= 1
+            i -= 1
         return result
 
 
@@ -90,9 +91,10 @@ class RomanNumerals:
         return num
 
 number = 3549
+test = 2008
 roman = 'MMMDXLIX'
-print("Roman value of number is:", RomanNumerals.to_roman(number))
-print("The integer value is: ", RomanNumerals.from_roman(roman))
+print("Roman value of number is:", RomanNumerals.to_roman(test))
+#print("The integer value is: ", RomanNumerals.from_roman(roman))
 
 '''
 Useful info: https://www.geeksforgeeks.org/python-program-to-convert-integer-to-roman/
