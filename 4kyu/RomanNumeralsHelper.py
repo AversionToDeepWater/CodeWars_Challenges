@@ -55,15 +55,21 @@ class RomanNumerals:
     # this ensures that the algorithm will traverse the list from largest to smallest
     @staticmethod
     def to_roman(val : int) -> str:
-        # roman = ''
-        # if val >= 1000:
-        #     mod = val % 1000
-        #     for i in range(mod):
-        #         roman += 'M'
-        # elif
+        result = ""
+        while val:
+            div = val // RomanNumerals.num[RomanNumerals.i]
+            val %= RomanNumerals.num[RomanNumerals.i]
 
-        return ''
+            while div:
+                result += RomanNumerals.sym[RomanNumerals.i]
+                div -= 1  #so we add the relevant roman numeral the correct number of times
+            RomanNumerals.i -= 1
+        return result
+
 
     @staticmethod
     def from_roman(roman_num : str) -> int:
         return 0
+
+number = 3549
+print("Roman value of number is:", RomanNumerals.to_roman(number))
