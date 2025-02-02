@@ -48,8 +48,20 @@ HELP
 """
 
 class RomanNumerals:
+    num = [1,4,5,9,10,40,50,90,100,400,500,900,1000]
+    sym = ["I", "IV","V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"]
+
+    i = 12 #this means that the code will loop from the largest num and sym (i.e., index 12)
+    # this ensures that the algorithm will traverse the list from largest to smallest
     @staticmethod
     def to_roman(val : int) -> str:
+        # roman = ''
+        # if val >= 1000:
+        #     mod = val % 1000
+        #     for i in range(mod):
+        #         roman += 'M'
+        # elif
+
         return ''
 
     @staticmethod
