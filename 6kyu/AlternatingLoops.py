@@ -15,15 +15,11 @@ import itertools
 
 def combine(*args) -> list:
     new_combination = []
-    non_tuple = []
 
     for i in itertools.zip_longest(*args):
         new_combination.append(i)
 
-    for i in new_combination:
-        for j in i:
-            if j is not None:
-                non_tuple.append(j)
+    non_tuple = [j for i in new_combination for j in i if j is not None]
 
     return non_tuple
 
